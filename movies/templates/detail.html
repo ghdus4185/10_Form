@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h1>{{movie.title}}</h1>
+  <a href="{% url 'movies:delete' movie.id %}">삭제</a>
+  <form action="{% url 'movies:delete' movie.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="삭제(post)">
+  </form>
+  <a href="{% url 'movies:update' movie.id %}">수정</a>
+  <div>
+    {{movie.title}}
+    {{movie.title_en}}
+    {{movie.audience}}
+    {{movie.open_date}}
+    {{movie.genre}}
+    {{movie.watch_grade}}
+    {{movie.score}}
+    {{movie.poster_url}}
+    {{movie.description}}
+  </div>
+{% endblock %}

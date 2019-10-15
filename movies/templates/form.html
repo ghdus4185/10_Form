@@ -2,5 +2,12 @@
 
 {% block body %}
   <h1>create</h1>
-  
+  <form action="" method="POST">
+    {% csrf_token %}
+      {{ form.as_p }}
+      {{form.title.label_tag}}
+      {{form.title}}
+      
+    <input type="submit">
+  </form>
 {% endblock %}

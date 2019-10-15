@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>index</h1>
+    {% for movie in movies%}
+      <div>
+      {{movie.title}}
+      {{movie.title_en}}
+      {{movie.audience}}
+      {{movie.open_date}}
+      {{movie.genre}}
+      {{movie.watch_grade}}
+      {{movie.score}}
+      {{movie.poster_url}}
+      {{movie.description}}
+      <a href="{% url 'movies:detail' movie.id %}">자세히보기</a>
+      </div>
+    {% endfor %}
+{% endblock %}
