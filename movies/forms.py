@@ -1,4 +1,5 @@
 from django import forms
+from .models import Movie, Comment
 
 
 class MovieForm(forms.Form):
@@ -20,3 +21,20 @@ class MovieForm(forms.Form):
     score = forms.FloatField()
     poster_url = forms.CharField(widget=forms.Textarea)
     description = forms.CharField(widget=forms.Textarea)
+
+
+class MovieModelForm(forms.ModelForm):
+    open_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    datetime = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+
+class CommentModelForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('content',)
+# 모델폼을 만들어서 이름은 comment 내용은 contents
+# views에 create_model_form
